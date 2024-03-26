@@ -3,7 +3,9 @@ let btn = document.getElementById('makeNotes');
 btn.addEventListener("click",addNotes);
 // show notes 
 function showNotes(){
+    // localStorage.removeItem("notes");
     notepad.innerHTML = localStorage.getItem("notes");
+    
 }
 showNotes();
 // save notes 
@@ -38,4 +40,11 @@ notepad.addEventListener("click",(e)=>{
             }
         })
     }
+})
+// for saving preventing enter default property 
+document.addEventListener("keydown",(event)=>{
+if(event.key === "Enter"){
+    document.execCommand("insertLineBreak");
+    event.preventDefault();
+}
 })
